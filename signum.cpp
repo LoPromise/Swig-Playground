@@ -1,6 +1,8 @@
 #include "signum.hpp"
 #include <stdio.h>
 #include <math.h>
+#include <iostream>
+#include "Callback.h"
 
 void (*callbackptr)(void)=NULL;
 
@@ -13,17 +15,10 @@ void Register::addEntry(int t) {
 	Entrys.push_back(t);
 }
 
+Register::Register(){}
+
 int Register::getEntry(int t) {
 	return Entrys[t];
-}
-
-void Register::callback(void (*ptr)(void)) {
-	Calllback_ptr=ptr;
-}
-
-void Register::triggerCallBack(void) {
-	if(Calllback_ptr!=NULL)
-		Calllback_ptr();
 }
 
 void global_callback(void (*ptr)(void)) {
@@ -34,3 +29,7 @@ void triggerCallback(void) {
 	if(callbackptr!=NULL)
 		callbackptr();
 }
+
+Register::~Register() {
+}
+

@@ -95,6 +95,13 @@ except __builtin__.Exception:
         pass
     _newclass = 0
 
+try:
+    import weakref
+    weakref_proxy = weakref.proxy
+except __builtin__.Exception:
+    weakref_proxy = lambda x: x
+
+
 
 def signum_calc(n):
     return _signum.signum_calc(n)
@@ -114,18 +121,6 @@ class Register(_object):
     __getattr__ = lambda self, name: _swig_getattr(self, Register, name)
     __repr__ = _swig_repr
 
-    def addEntry(self, arg2):
-        return _signum.Register_addEntry(self, arg2)
-
-    def getEntry(self, i):
-        return _signum.Register_getEntry(self, i)
-
-    def callback(self, ptr):
-        return _signum.Register_callback(self, ptr)
-
-    def triggerCallBack(self):
-        return _signum.Register_triggerCallBack(self)
-
     def __init__(self):
         this = _signum.new_Register()
         try:
@@ -134,8 +129,71 @@ class Register(_object):
             self.this = this
     __swig_destroy__ = _signum.delete_Register
     __del__ = lambda self: None
+
+    def addEntry(self, arg2):
+        return _signum.Register_addEntry(self, arg2)
+
+    def getEntry(self, i):
+        return _signum.Register_getEntry(self, i)
 Register_swigregister = _signum.Register_swigregister
 Register_swigregister(Register)
+
+class ICallback(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, ICallback, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, ICallback, name)
+    __repr__ = _swig_repr
+
+    def Call(self):
+        return _signum.ICallback_Call(self)
+    __swig_destroy__ = _signum.delete_ICallback
+    __del__ = lambda self: None
+
+    def __init__(self):
+        if self.__class__ == ICallback:
+            _self = None
+        else:
+            _self = self
+        this = _signum.new_ICallback(_self, )
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    def __disown__(self):
+        self.this.disown()
+        _signum.disown_ICallback(self)
+        return weakref_proxy(self)
+ICallback_swigregister = _signum.ICallback_swigregister
+ICallback_swigregister(ICallback)
+
+class Example(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Example, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, Example, name)
+    __repr__ = _swig_repr
+
+    def GiveCallback(self, callback):
+        return _signum.Example_GiveCallback(self, callback)
+
+    def CallCallback(self):
+        return _signum.Example_CallCallback(self)
+    __swig_setmethods__["callback_"] = _signum.Example_callback__set
+    __swig_getmethods__["callback_"] = _signum.Example_callback__get
+    if _newclass:
+        callback_ = _swig_property(_signum.Example_callback__get, _signum.Example_callback__set)
+
+    def __init__(self):
+        this = _signum.new_Example()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _signum.delete_Example
+    __del__ = lambda self: None
+Example_swigregister = _signum.Example_swigregister
+Example_swigregister(Example)
 
 # This file is compatible with both classic and new-style classes.
 

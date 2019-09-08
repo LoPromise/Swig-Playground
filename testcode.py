@@ -1,21 +1,37 @@
 import signum
 
-def callback_python():
- print("callback from c to python")
+class Callback(signum.ICallback):
+    def __init__(self, fnToCall):
+        signum.ICallback.__init__(self)
+        self.fnToCall = fnToCall
+    def Call(self):
+        self.fnToCall()
+
+def TestFunction():
+    print('Hello from a callback!')
+def TestFunctionRetValue(x):
+    print('Hello from a callback!')
+
 
 a=signum.signum_calc(4)
 print("signum.signum_calc(4) = "+str(a))
 a=signum.signum_calc(-4)
 print("signum.signum_calc(-4) = "+str(a))
 
-o=signum.Register()
+i=signum.Register()
 print("assign C++ Object to o o=signum.Register()"+str(4))
-a=o.addEntry(4)
+a=i.addEntry(4)
 print("b=o.addEntry(0) = "+str(4))
-a=o.addEntry(6)
+a=i.addEntry(6)
 print("b=o.addEntry(0) = "+str(6))
-b=o.getEntry(0)
+b=i.getEntry(0)
 print("b=o.getEntry(0) = "+str(b))
-b=o.getEntry(1)
+b=i.getEntry(1)
 print("b=o.getEntry(1) = "+str(b))
-a=signum.global_callback(callback_python)
+
+o=signum.Example()
+callback = Callback(TestFunction)
+print("set Callback")
+o.GiveCallback(callback)
+print("calling Callback")
+o.CallCallback()
