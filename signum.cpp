@@ -3,8 +3,6 @@
 #include <math.h>
 #include <iostream>
 
-void (*callbackptr)(void)=NULL;
-
 int signum_calc(int n)
 {
   return(n<0?-1:1);
@@ -21,15 +19,6 @@ int Register::getEntry(int t) {
 	if(t<=Entrys.size())
 		return Entrys[t];
 	throw std::runtime_error("Entry not in Vector");
-}
-
-void global_callback(void (*ptr)(void)) {
-	callbackptr=ptr;
-}
-
-void triggerCallback(void) {
-	if(callbackptr!=NULL)
-		callbackptr();
 }
 
 Register::~Register() {

@@ -11,9 +11,7 @@
 #include <vector>
 
 int signum_calc(int n);
-// not the correct way of doing callbacks... https://stackoverflow.com/questions/12392703/what-is-the-cleanest-way-to-call-a-python-function-from-c-with-a-swig-wrapped
-void global_callback(void (*ptr)(void));
-void triggerCallback(void);
+
 
 class Register{
 public:
@@ -24,7 +22,10 @@ public:
 private:
 	std::vector<int> Entrys;
 };
-//Note Restriction of this is that no variables can be passed directly...
+
+//https://stackoverflow.com/questions/12392703/what-is-the-cleanest-way-to-call-a-python-function-from-c-with-a-swig-wrapped
+//https://blog.mbedded.ninja/programming/languages/python/python-swig-bindings-from-cplusplus/
+
 class ICallback {
 public:
     virtual void Call() = 0;

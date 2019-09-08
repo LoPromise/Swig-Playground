@@ -106,14 +106,6 @@ except __builtin__.Exception:
 def signum_calc(n):
     return _signum.signum_calc(n)
 signum_calc = _signum.signum_calc
-
-def global_callback(ptr):
-    return _signum.global_callback(ptr)
-global_callback = _signum.global_callback
-
-def triggerCallback():
-    return _signum.triggerCallback()
-triggerCallback = _signum.triggerCallback
 class Register(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Register, name, value)
