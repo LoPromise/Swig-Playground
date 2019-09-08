@@ -3005,8 +3005,9 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 
 #define SWIGTYPE_p_Register swig_types[0]
 #define SWIGTYPE_p_char swig_types[1]
-static swig_type_info *swig_types[3];
-static swig_module_info swig_module = {swig_types, 2, 0, 0, 0, 0};
+#define SWIGTYPE_p_f_void__void swig_types[2]
+static swig_type_info *swig_types[4];
+static swig_module_info swig_module = {swig_types, 3, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3300,6 +3301,38 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_global_callback(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  void (*arg1)(void) = (void (*)(void)) 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:global_callback",&obj0)) SWIG_fail;
+  {
+    int res = SWIG_ConvertFunctionPtr(obj0, (void**)(&arg1), SWIGTYPE_p_f_void__void);
+    if (!SWIG_IsOK(res)) {
+      SWIG_exception_fail(SWIG_ArgError(res), "in method '" "global_callback" "', argument " "1"" of type '" "void (*)(void)""'"); 
+    }
+  }
+  global_callback(arg1);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_triggerCallback(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)":triggerCallback")) SWIG_fail;
+  triggerCallback();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Register_addEntry(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Register *arg1 = (Register *) 0 ;
@@ -3361,6 +3394,56 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Register_callback(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Register *arg1 = (Register *) 0 ;
+  void (*arg2)(void) = (void (*)(void)) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Register_callback",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Register, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Register_callback" "', argument " "1"" of type '" "Register *""'"); 
+  }
+  arg1 = reinterpret_cast< Register * >(argp1);
+  {
+    int res = SWIG_ConvertFunctionPtr(obj1, (void**)(&arg2), SWIGTYPE_p_f_void__void);
+    if (!SWIG_IsOK(res)) {
+      SWIG_exception_fail(SWIG_ArgError(res), "in method '" "Register_callback" "', argument " "2"" of type '" "void (*)(void)""'"); 
+    }
+  }
+  (arg1)->callback(arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Register_triggerCallBack(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Register *arg1 = (Register *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Register_triggerCallBack",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Register, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Register_triggerCallBack" "', argument " "1"" of type '" "Register *""'"); 
+  }
+  arg1 = reinterpret_cast< Register * >(argp1);
+  (arg1)->triggerCallBack();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_Register(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Register *result = 0 ;
@@ -3405,8 +3488,12 @@ SWIGINTERN PyObject *Register_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObj
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { (char *)"signum_calc", _wrap_signum_calc, METH_VARARGS, NULL},
+	 { (char *)"global_callback", _wrap_global_callback, METH_VARARGS, NULL},
+	 { (char *)"triggerCallback", _wrap_triggerCallback, METH_VARARGS, NULL},
 	 { (char *)"Register_addEntry", _wrap_Register_addEntry, METH_VARARGS, NULL},
 	 { (char *)"Register_getEntry", _wrap_Register_getEntry, METH_VARARGS, NULL},
+	 { (char *)"Register_callback", _wrap_Register_callback, METH_VARARGS, NULL},
+	 { (char *)"Register_triggerCallBack", _wrap_Register_triggerCallBack, METH_VARARGS, NULL},
 	 { (char *)"new_Register", _wrap_new_Register, METH_VARARGS, NULL},
 	 { (char *)"delete_Register", _wrap_delete_Register, METH_VARARGS, NULL},
 	 { (char *)"Register_swigregister", Register_swigregister, METH_VARARGS, NULL},
@@ -3418,18 +3505,22 @@ static PyMethodDef SwigMethods[] = {
 
 static swig_type_info _swigt__p_Register = {"_p_Register", "Register *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_f_void__void = {"_p_f_void__void", "void (*)(void)", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_Register,
   &_swigt__p_char,
+  &_swigt__p_f_void__void,
 };
 
 static swig_cast_info _swigc__p_Register[] = {  {&_swigt__p_Register, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_f_void__void[] = {  {&_swigt__p_f_void__void, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_Register,
   _swigc__p_char,
+  _swigc__p_f_void__void,
 };
 
 
