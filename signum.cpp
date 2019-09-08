@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <math.h>
 #include <iostream>
-#include "Callback.h"
 
 void (*callbackptr)(void)=NULL;
 
@@ -18,7 +17,10 @@ void Register::addEntry(int t) {
 Register::Register(){}
 
 int Register::getEntry(int t) {
-	return Entrys[t];
+	//Careful no BoundryChecks apply... so check if limiters apply
+	if(t<=Entrys.size())
+		return Entrys[t];
+	throw std::runtime_error("Entry not in Vector");
 }
 
 void global_callback(void (*ptr)(void)) {

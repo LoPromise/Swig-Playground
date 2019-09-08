@@ -9,7 +9,6 @@
 #define SIGNUM_HPP_
 #include <string>
 #include <vector>
-#include "Callback.h"
 
 int signum_calc(int n);
 // not the correct way of doing callbacks... https://stackoverflow.com/questions/12392703/what-is-the-cleanest-way-to-call-a-python-function-from-c-with-a-swig-wrapped
