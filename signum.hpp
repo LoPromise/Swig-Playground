@@ -25,7 +25,8 @@ private:
 
 //https://stackoverflow.com/questions/12392703/what-is-the-cleanest-way-to-call-a-python-function-from-c-with-a-swig-wrapped
 //https://blog.mbedded.ninja/programming/languages/python/python-swig-bindings-from-cplusplus/
-//http://www.swig.org/Doc1.1/HTML/Python.html
+//http://www.swig.org/Doc1.1/HTML/Python.html#
+//https://docs.python.org/2.0/ext/buildValue.html
 
 class ICallback {
 public:
